@@ -1,6 +1,6 @@
 #!/bin/bash
 
-a=$1
+a="a"
 b=$2
 extra=$3
 
