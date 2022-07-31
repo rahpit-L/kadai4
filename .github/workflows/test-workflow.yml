@@ -1,0 +1,20 @@
+
+
+name: kadai4 test
+on:
+  push:
+    branches:
+      - master
+env:
+  project-name: kadai4
+
+jobs:
+  deploy:
+    name: run test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: execute test
+        shell: bash
+        run: ./gcf_test.sh
