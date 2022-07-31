@@ -1,0 +1,49 @@
+■ファイル構成
+gcf.sh:最大公約数を計算するシェルスクリプト
+gcf_test.sh:gcfの動作を確認するシェルスクリプト
+.github/workflows配下:CIで利用しているgithub acitonsの定義ファイル置き場
+
+■利用するCI
+GithubActions
+コミットをmasterブランチにpushするとgcf_test.shを実行するCIジョブがスタートします。
+
+■テスト結果サンプル
+$ ./gcf_test.sh
+=========================
+running test for gcf.sh
+=========================
+2と4を入力する && 2を出力したら成功 || 出力しなかったらエラー
+[START]test ./gcf.sh 2 4
+exit status=0 result=2
+[SUCCESS] test ./gcf.sh 2 4
+=========================
+[START] test ./gcf.sh 3
+3を入力する || エラーメッセージが出なかったらエラー
+exit status=1 result=please input natural number as arg 2. ex) ./gcf.sh [natural number] [natural number]
+[SUCCESS] test ./gcf.sh 3
+=========================
+[START] test ./gcf.sh a a
+文字を入力する || エラーメッセージが出なかったらエラー
+exit status=1 result=please input natural number as arg 1. ex) ./gcf.sh [natural number] [natural number]
+[SUCCESS] test ./gcf.sh a a
+=========================
+[START] test ./gcf.sh 1071 1029
+大きい数字でのテスト
+exit status=0 result=21
+[SUCCESS] test  ./gcf.sh 1071 1029
+=========================
+[START] test ./gcf.sh 1 2 3
+引数の数が多い
+exit status=1 result=please input only 2 natural number. ex) ./gcf.sh [natural number] [natural number]
+[SUCCESS] test ./gcf.sh 1 2 3
+=========================
+[START] test ./gcf.sh -1 2
+数値がマイナス
+exit status=1 result=please input natural number as arg 1. ex) ./gcf.sh [natural number] [natural number]
+[SUCCESS] test ./gcf.sh -1 2
+=========================
+[START] test ./gcf.sh 4 2.2
+数値が小数
+exit status=1 result=please input natural number as arg 2. ex) ./gcf.sh [natural number] [natural number]
+[SUCCESS] test ./gcf.sh 4 2.2
+[SUCCESS] TEST ALL OK!
